@@ -67,31 +67,37 @@
 </div>
 
 <script>
-    var content;
-    var title;
+    var targetObject;
+    var korTitle;
     var chapter;
     var verse;
-    var message;
+    var content;
+    var engAbbr;
 
     window.addEventListener('message', (event) => {
-      content = event.data[0];
-      title = content.title;
-      chapter = content.chapter;
-      verse = content.verse;
-      message = content.message;
-      updateVerseDisplay(title, chapter, verse, message);
-      console.log("말씀 열기")
+      //데이터 할당
+      targetObject = event.data[0];
+      korTitle = targetObject.korTitle;
+      chapter = targetObject.chapter;
+      verse = targetObject.verse;
+      content = targetObject.content;
+      engAbbr = targetObject.engAbbr;
 
-      function updateVerseDisplay(title, chapter, verse, message) {
+      //데이터 표시 함수 호출
+      updateVerseDisplay(korTitle, chapter, verse, content);
+
+      //데이터 표시 함수 정의
+      function updateVerseDisplay(korTitle, chapter, verse, content) {
         const titleElement = document.querySelector('.book-title-container');
         const verseMessageElement = document.querySelector('.message');
 
-        titleElement.textContent = title+chapter+':'+verse;
-        verseMessageElement.textContent = message;
+        titleElement.textContent = korTitle+chapter+':'+verse;
+        verseMessageElement.textContent = content;
         }
     });
 
-    // Add event listeners to the left and right arrow buttons
+
+    // 이전 구절, 다음 구절 버튼
     const leftArrowButton = document.querySelector('.left-arrow');
     const rightArrowButton = document.querySelector('.right-arrow');
 
@@ -99,32 +105,34 @@
         // Update the verse display with the previous verse
         const currentVerse = parseInt(verse);
         if (currentVerse > 1) {
-            updateVerseDisplay(`${title}/${chapter}:${currentVerse - 1}`);
             verse = verse - 1;
+            //TODO
+            updateVerseDisplay(`${engAbbr}/${chapter}:${verse}`);
         }
     });
 
     rightArrowButton.addEventListener('click', () => {
         // Update the verse display with the next verse
         const currentVerse = parseInt(verse);
-        updateVerseDisplay(`${title}/${chapter}:${currentVerse + 1}`);
         verse = verse + 1;
+        //TODO
+        updateVerseDisplay(`${engAbbr}/${chapter}:${verse}`);
     });
 
-    // Helper function to update the verse display
+    //TODO 이전 구절, 다음 구절 버튼이 누른 후 새로운 데이터를 표시하는 함수 정의
     function updateVerseDisplay(url) {
         console.log("말씀 선포 업데이트")
         fetch(url)
             .then(response => response.json())
             .then(data => {
-                const { title, chapter, verse, message } = data[0];
+                const { korTitle, chapter, verse, content } = data[0];
                 const titleElement = document.querySelector('.book-title-container');
                 const verseMessageElement = document.querySelector('.message');
 
-                titleElement.textContent = `${title} ${chapter}:${verse}`;
-                titleElement.textContent = `${title} ${chapter}:${verse}`;
+                titleElement.textContent = `${korTitle} ${chapter}:${verse}`;
+                titleElement.textContent = `${korTitle} ${chapter}:${verse}`;
 
-                verseMessageElement.textContent = message;
+                verseMessageElement.textContent = content;
             })
             .catch(error => console.error(error));
     }
