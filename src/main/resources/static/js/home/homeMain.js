@@ -9,6 +9,8 @@ let selectedObject;
 let selectedBook = '';
 let selectedChapter = 0;
 let selectedVerse = 0;
+var maxChapter;
+var maxVerse;
 
 // 성경 버튼 생성
 for (const book in bibleBooks) {
@@ -18,7 +20,8 @@ for (const book in bibleBooks) {
         selectedObject = book;
         selectedBook = bibleBooks[book].abbreviation;
         updateUrl();
-        generateChapterButtons(bibleBooks[book].chapters);
+        maxChapter = bibleBooks[book].chapters;
+        generateChapterButtons(maxChapter);
     });
     bibleButtonsContainer.appendChild(button);
 }

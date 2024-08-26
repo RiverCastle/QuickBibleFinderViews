@@ -10,7 +10,8 @@ function generateChapterButtons(maxChapters) {
         button.addEventListener('click', () => {
             selectedChapter = i;
             updateUrl();
-            generateVerseButtons(bibleBooks[selectedObject].verses[selectedChapter - 1]); // 인덱스 0으로 시작해서 -1
+            maxVerse = bibleBooks[selectedObject].verses[selectedChapter - 1];
+            generateVerseButtons(maxVerse);
         });
         chapterButtonsContainer.appendChild(button);
     }

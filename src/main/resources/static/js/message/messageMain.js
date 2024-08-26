@@ -4,6 +4,7 @@ var targetObject;
     var verse;
     var content;
     var engAbbr;
+    var maxVerse;
 
     window.addEventListener('message', (event) => {
       //데이터 할당
@@ -13,6 +14,7 @@ var targetObject;
       verse = targetObject.verse;
       content = targetObject.content;
       engAbbr = targetObject.engAbbr;
+      maxVerse = targetObject.maxVerse;
 
       //데이터 표시 함수 호출
       updateVerseDisplay(korTitle, chapter, verse, content);
