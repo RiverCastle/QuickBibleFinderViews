@@ -1,4 +1,4 @@
-const bibleBooks = {
+const oldTestaments = {
     "창세기": { abbreviation: "ge", chapters: 50, verses: [31, 25, 24, 26, 32, 22, 24, 22, 29, 32, 32, 20, 18, 24, 21, 16, 27, 33, 38, 18, 34, 24, 20, 67, 34, 35, 46, 22, 35, 43, 55, 32, 20, 31, 29, 43, 36, 30, 23, 23, 57, 38, 34, 34, 28, 34, 31, 22, 33, 26] },
         "출애굽기": { abbreviation: "ex", chapters: 40, verses: [22, 25, 22, 31, 23, 30, 25, 32, 35, 29, 10, 51, 22, 31, 27, 36, 16, 27, 25, 26, 36, 31, 33, 18, 40, 37, 21, 43, 46, 38, 18, 35, 23, 35, 35, 38, 29, 31, 43, 38] },
         "레위기": { abbreviation: "le", chapters: 27, verses: [17, 16, 17, 35, 19, 30, 38, 36, 24, 20, 47, 8, 59, 57, 33, 34, 16, 30, 37, 27, 24, 33, 44, 23, 55, 46, 34] },
@@ -37,7 +37,10 @@ const bibleBooks = {
         "스바냐": { abbreviation: "zeph", chapters: 3, verses: [18, 15, 20] },
         "학개": { abbreviation: "hag", chapters: 2, verses: [15, 23] },
         "스가랴": { abbreviation: "zec", chapters: 14, verses: [21, 13, 10, 14, 11, 15, 14, 23, 17, 12, 17, 14, 9, 21] },
-        "말라기": { abbreviation: "mal", chapters: 4, verses: [14, 17, 18, 6] },
+        "말라기": { abbreviation: "mal", chapters: 4, verses: [14, 17, 18, 6] }
+        }
+
+const newTestaments = {
         "마태복음": { abbreviation: "mat", chapters: 28, verses: [25, 23, 17, 25, 48, 34, 29, 34, 38, 42, 30, 50, 58, 36, 39, 28, 27, 35, 30, 34, 46, 46, 39, 51, 46, 75, 66, 20] },
         "마가복음": { abbreviation: "mar", chapters: 16, verses: [45, 28, 35, 41, 43, 56, 37, 38, 50, 52, 33, 44, 37, 72, 47, 20] },
         "누가복음": { abbreviation: "luk", chapters: 24, verses: [80, 52, 38, 44, 39, 49, 50, 56, 62, 42, 54, 59, 35, 35, 32, 31, 37, 43, 48, 47, 38, 71, 56, 53] },

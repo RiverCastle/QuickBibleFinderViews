@@ -7,3 +7,12 @@ button {
     padding: 10px;
     font-size: 16px;
 }
+.bible-buttons-container {
+    display: flex; /* Flexbox를 사용하여 자식 요소를 가로로 배치 */
+    gap: 10px; /* 두 div 사이의 간격 설정 (선택 사항) */
+}
+.bible-buttons-box {
+    flex: 1; /* 각 div가 컨테이너의 가로 크기를 동일하게 차지하도록 설정 */
+    padding: 10px; /* 안쪽 여백 설정 (선택 사항) */
+    box-sizing: border-box; /* padding과 border를 포함하여 width를 계산 */
+}
