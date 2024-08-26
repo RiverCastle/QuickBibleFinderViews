@@ -4,32 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>QuickBibleFinder 모니터링 페이지</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 20px;
-        }
-        h1 {
-            text-align: center;
-        }
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            margin-top: 20px;
-        }
-        th, td {
-            border: 1px solid #ddd;
-            padding: 8px;
-            text-align: center;
-        }
-        th {
-            background-color: #f4f4f4;
-        }
-        #avgResponseTime {
-            margin-top: 20px;
-            font-weight: bold;
-        }
-    </style>
+    <link rel="stylesheet" href="/css/monitoring.css">
 </head>
 <body>
 <h1>성경 말씀 요청 모니터링</h1>
@@ -49,77 +24,7 @@
     <!-- 데이터가 여기에 동적으로 삽입됩니다 -->
     </tbody>
 </table>
-
-<script>
-    document.addEventListener("DOMContentLoaded", function() {
-    // API 호출하여 평균 응답 시간 가져오기
-    fetch("http://localhost:8080/log/average-processing-time")
-        .then(response => {
-            if (!response.ok) {
-                throw new Error("Network response was not ok " + response.statusText);
-            }
-            return response.json(); // assuming the API returns JSON data
-        })
-        .then(data => {
-            // average-processing-time API가 평균 응답 시간을 반환한다고 가정
-            const averageTime = data; // data에서 평균 시간을 가져옴
-            console.log(averageTime);
-            document.getElementById("overallAvgTime").innerHTML = averageTime;
-        })
-        .catch(error => {
-            console.error("There was a problem with the fetch operation:", error);
-            document.getElementById("overallAvgTime").innerHTML = "Error fetching data";
-        });
-});
-
-
-document.addEventListener("DOMContentLoaded", function() {
-    // API에서 데이터 가져오기
-    fetch("http://localhost:8080/log/20")
-        .then(response => {
-            if (!response.ok) {
-                throw new Error("Network response was not ok " + response.statusText);
-            }
-            return response.json(); // JSON 형식으로 파싱
-        })
-        .then(data => {
-            // 테이블의 <tbody> 요소를 가져옴
-            const tbody = document.querySelector("tbody");
-
-            // 데이터를 반복하면서 테이블에 행을 추가
-            data.forEach(log => {
-                // 새로운 행 생성
-                const row = document.createElement("tr");
-
-                // engAbbr 열 추가
-                const bibleCell = document.createElement("td");
-                bibleCell.textContent = log.engAbbr; // 성경
-                row.appendChild(bibleCell);
-
-                // verseInfo 열 추가 (장 : 절)
-                const verseCell = document.createElement("td");
-                verseCell.textContent = log.verseInfo; // 장 : 절
-                row.appendChild(verseCell);
-
-                // whenRequested 열 추가 (날짜)
-                const dateCell = document.createElement("td");
-                dateCell.textContent = new Date(log.whenRequested).toLocaleString(); // 날짜
-                row.appendChild(dateCell);
-
-                // processingTime 열 추가 (응답 시간)
-                const timeCell = document.createElement("td");
-                timeCell.textContent = log.processingTime + " ms"; // 응답 시간
-                row.appendChild(timeCell);
-
-                // 행을 <tbody>에 추가
-                tbody.appendChild(row);
-            });
-        })
-        .catch(error => {
-            console.error("There was a problem with the fetch operation:", error);
-        });
-});
-
-</script>
+<script src="/js/monitoring/monitorAvgProcessingTime.js"></script>
+<script src="/js/monitoring/usageLogFetch.js"></script>
 </body>
 </html>
