@@ -3,7 +3,6 @@ function openNewWindow(data) {
   const newWindow = window.open('http://localhost:8081/message', 'Data Window', 'fullscreen=yes');
   if (newWindow) {
     newWindow.onload = function() {
-      console.log(data);
       newWindow.postMessage(data, '*');
     };
   }

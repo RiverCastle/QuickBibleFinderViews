@@ -1,5 +1,3 @@
-console.log("hello js");
-
 const bibleButtonsContainer = document.getElementById('bible-buttons');
 const chapterButtonsContainer = document.getElementById('chapter-buttons');
 const verseButtonsContainer = document.getElementById('verse-buttons');

@@ -3,7 +3,7 @@ const leftArrowButton = document.querySelector('.left-arrow');
 const rightArrowButton = document.querySelector('.right-arrow');
 
 leftArrowButton.addEventListener('click', () => {
-    // Update the verse display with the previous verse
+    // 이전 성경 구절
     const currentVerse = parseInt(verse);
     if (currentVerse > 1) {
         verse = verse - 1;
@@ -12,7 +12,7 @@ leftArrowButton.addEventListener('click', () => {
 });
 
 rightArrowButton.addEventListener('click', () => {
-    // Update the verse display with the next verse
+    // 다음 성경 구절
     const currentVerse = parseInt(verse);
     if (currentVerse < maxVerse) {
         verse = verse + 1;
