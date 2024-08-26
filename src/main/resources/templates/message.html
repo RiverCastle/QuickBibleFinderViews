@@ -3,57 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>성경 말씀</title>
-    <style>
-        body {
-            background-color: black;
-            color: white;
-            font-family: "Noto Sans KR";
-            font-weight: bold;
-            margin: 10px;
-        }
-
-        .verse-info-container {
-            display: flex;
-            flex-direction: column;
-            align-items: flex-start;
-        }
-
-        .verse-info-container p {
-            margin: 0;
-            font-size: 50px;
-        }
-
-        .book-title-container {
-            font-size: 28px;
-            font-weight: bold;
-        }
-        .button-container {
-          position: fixed;
-          bottom: 20px;
-          width: 100%;
-          display: flex;
-          justify-content: space-between;
-        }
-
-        .left-arrow,
-        .right-arrow {
-          width: 0;
-          height: 0;
-          border-top: 10px solid transparent;
-          border-bottom: 10px solid transparent;
-          background-color: #333;
-          padding: 20px;
-          cursor: pointer;
-        }
-
-        .left-arrow {
-          border-right: 20px solid #fff;
-        }
-
-        .right-arrow {
-          border-left: 20px solid #fff;
-        }
-    </style>
+    <link rel="stylesheet" href="/css/message.css">
 </head>
 <body>
 <div class="verse-info-container">
@@ -65,79 +15,8 @@
     <button class="left-arrow"></button>
     <button class="right-arrow"></button>
 </div>
-
-<script>
-    var targetObject;
-    var korTitle;
-    var chapter;
-    var verse;
-    var content;
-    var engAbbr;
-
-    window.addEventListener('message', (event) => {
-      //데이터 할당
-      targetObject = event.data[0];
-      korTitle = targetObject.korTitle;
-      chapter = targetObject.chapter;
-      verse = targetObject.verse;
-      content = targetObject.content;
-      engAbbr = targetObject.engAbbr;
-
-      //데이터 표시 함수 호출
-      updateVerseDisplay(korTitle, chapter, verse, content);
-
-      //데이터 표시 함수 정의
-      function updateVerseDisplay(korTitle, chapter, verse, content) {
-        const titleElement = document.querySelector('.book-title-container');
-        const verseMessageElement = document.querySelector('.message');
-
-        titleElement.textContent = korTitle+chapter+':'+verse;
-        verseMessageElement.textContent = content;
-        }
-    });
-
-
-    // 이전 구절, 다음 구절 버튼
-    const leftArrowButton = document.querySelector('.left-arrow');
-    const rightArrowButton = document.querySelector('.right-arrow');
-
-    leftArrowButton.addEventListener('click', () => {
-        // Update the verse display with the previous verse
-        const currentVerse = parseInt(verse);
-        if (currentVerse > 1) {
-            verse = verse - 1;
-            //TODO
-            updateVerseDisplay(`${engAbbr}/${chapter}:${verse}`);
-        }
-    });
-
-    rightArrowButton.addEventListener('click', () => {
-        // Update the verse display with the next verse
-        const currentVerse = parseInt(verse);
-        verse = verse + 1;
-        //TODO
-        updateVerseDisplay(`${engAbbr}/${chapter}:${verse}`);
-    });
-
-    //이전 구절, 다음 구절 버튼이 누른 후 새로운 데이터를 표시하는 함수 정의
-    function updateVerseDisplay(info) {
-        console.log("말씀 선포 업데이트")
-        fetch("http://localhost:8080/" + info)
-            .then(response => response.json())
-            .then(data => {
-                const { korTitle, chapter, verse, content } = data[0];
-                const titleElement = document.querySelector('.book-title-container');
-                const verseMessageElement = document.querySelector('.message');
-
-                titleElement.textContent = `${korTitle} ${chapter}:${verse}`;
-                titleElement.textContent = `${korTitle} ${chapter}:${verse}`;
-
-                verseMessageElement.textContent = content;
-            })
-            .catch(error => console.error(error));
-    }
-
-
-</script>
+<script src="/js/message/messageMain.js"></script>
+<script src="/js/message/leftAndRightButton.js"></script>
+<script src="/js/message/verseDisplayUpdateFunction.js"></script>
 </body>
 </html>
