@@ -10,7 +10,7 @@ function generateChapterButtons(maxChapters) {
         button.addEventListener('click', () => {
             selectedChapter = i;
             updateUrl();
-            maxVerse = bibleBooks[selectedObject].verses[selectedChapter - 1];
+            maxVerse = bibleBook.verses[selectedChapter - 1];
             generateVerseButtons(maxVerse);
         });
         chapterButtonsContainer.appendChild(button);

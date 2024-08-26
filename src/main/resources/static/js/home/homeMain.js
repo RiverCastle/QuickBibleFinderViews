@@ -1,28 +1,24 @@
 const bibleButtonsContainer = document.getElementById('bible-buttons');
+const oldTestamentsButtonsContainer = document.getElementById('old-testament');
+const newTestamentsButtonsContainer = document.getElementById('new-testament');
+
 const chapterButtonsContainer = document.getElementById('chapter-buttons');
 const verseButtonsContainer = document.getElementById('verse-buttons');
 const urlElement = document.getElementById('url');
 
-let selectedObject;
-let selectedBook = '';
-let selectedChapter = 0;
-let selectedVerse = 0;
+var bibleBook;
+var korTitle;
+var engAbbr = '';
+var selectedChapter = 0;
+var selectedVerse = 0;
 var maxChapter;
 var maxVerse;
 
-// 성경 버튼 생성
-for (const book in bibleBooks) {
-    const button = document.createElement('button');
-    button.innerText = book;
-    button.addEventListener('click', () => {
-        selectedObject = book;
-        selectedBook = bibleBooks[book].abbreviation;
-        updateUrl();
-        maxChapter = bibleBooks[book].chapters;
-        generateChapterButtons(maxChapter);
-    });
-    bibleButtonsContainer.appendChild(button);
-}
+// 구약 성경 버튼 생성 기본 인덱스
+bibleButtonGenerate(oldTestaments, oldTestamentsButtonsContainer)
+// 신약 성경 버튼 생성 기본 인덱스
+bibleButtonGenerate(newTestaments, newTestamentsButtonsContainer)
+
 // A 페이지
 const goButton = document.getElementById('go-button');
 goButton.addEventListener('click', fetchAndOpenData);
