@@ -14,4 +14,9 @@ public class ViewController {
     public String getMessagePage() {
         return "message";
     }
+
+    @GetMapping("/monitor")
+    public String getMonitoringPage() {
+        return "monitoring";
+    }
 }
