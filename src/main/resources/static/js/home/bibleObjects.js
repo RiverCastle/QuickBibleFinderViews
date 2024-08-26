@@ -40,6 +40,13 @@ const oldTestaments = {
     "말라기": { abbreviation: "mal", chapters: 4, verses: [14, 17, 18, 6] }
 };
 
+const sortedOldTestaments = Object.keys(oldTestaments)
+    .sort((a, b) => a.localeCompare(b, 'ko')) // 한글 오름차순 정렬
+    .reduce((obj, key) => {
+        obj[key] = oldTestaments[key];
+        return obj;
+    }, {});
+
 
 
 const newTestaments = {
@@ -71,3 +78,10 @@ const newTestaments = {
     "유다서": { abbreviation: "jud", chapters: 1, verses: [25] },
     "요한계시록": { abbreviation: "rev", chapters: 22, verses: [20, 29, 22, 18, 14, 20, 17, 13, 21, 11, 19, 18, 18, 20, 8, 21, 18, 24, 21, 15, 27, 21] }
 };
+
+const sortedNewTestaments = Object.keys(newTestaments)
+    .sort((a, b) => a.localeCompare(b, 'ko')) // 한글 오름차순 정렬
+    .reduce((obj, key) => {
+        obj[key] = newTestaments[key];
+        return obj;
+    }, {});
