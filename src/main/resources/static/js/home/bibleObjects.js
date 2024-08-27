@@ -69,7 +69,7 @@ const newTestaments = {
     "디도서": { abbreviation: "tit", chapters: 3, verses: [16, 15, 15] },
     "빌레몬서": { abbreviation: "phm", chapters: 1, verses: [25] },
     "히브리서": { abbreviation: "heb", chapters: 13, verses: [14, 18, 19, 16, 14, 20, 28, 13, 28, 39, 40, 29, 25] },
-    "야고보서": { abbreviation: "jas", chapters: 5, verses: [27, 26, 18, 17, 20] },
+    "야고보서": { abbreviation: "jam", chapters: 5, verses: [27, 26, 18, 17, 20] },
     "베드로전서": { abbreviation: "1pe", chapters: 5, verses: [25, 25, 22, 19, 14] },
     "베드로후서": { abbreviation: "2pe", chapters: 3, verses: [21, 22, 18] },
     "요한일서": { abbreviation: "1jo", chapters: 5, verses: [10, 29, 24, 21, 21] },
