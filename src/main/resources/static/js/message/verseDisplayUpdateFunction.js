@@ -1,6 +1,6 @@
 //이전 구절, 다음 구절 버튼이 누른 후 새로운 데이터를 표시하는 함수 정의
 function updateVerseDisplay(info) {
-    fetch("http://localhost:8080/" + info)
+    fetch(`${BACKEND_BASE_URL}/` + info)
         .then(response => response.json())
         .then(data => {
             const { korTitle, chapter, verse, content } = data[0];

@@ -9,6 +9,8 @@ function bibleButtonGenerate(bibleBooks, ButtonsContainer) {
             bibleBook = bibleBooks[book];
             korTitle = book;
             engAbbr = bibleBooks[book].abbreviation;
+
+            url = BACKEND_BASE_URL;
             updateUrl();
             maxChapter = bibleBooks[book].chapters;
             generateChapterButtons(maxChapter);
