@@ -1,6 +1,6 @@
 document.addEventListener("DOMContentLoaded", function() {
     // API에서 데이터 가져오기
-    fetch("http://localhost:8080/log/20")
+    fetch(`${BACKEND_BASE_URL}/log/20`)
         .then(response => {
             if (!response.ok) {
                 throw new Error("Network response was not ok " + response.statusText);

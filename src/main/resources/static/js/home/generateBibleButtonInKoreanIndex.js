@@ -1,20 +1,18 @@
-function bibleButtonGenerate(bibleBooks, ButtonsContainer) {
-    ButtonsContainer.innerHTML = '';
+function generateBibleButtonInKoreanIndex(bibleBooks, ButtonsContainer) {
 
     for (const book in bibleBooks) {
         const button = document.createElement('button');
         button.innerText = book;
-
+        var koreanIndex = bibleBooks[book].koreanIndex;
         button.addEventListener('click', () => {
             bibleBook = bibleBooks[book];
             korTitle = book;
             engAbbr = bibleBooks[book].abbreviation;
-
-            url = BACKEND_BASE_URL;
             updateUrl();
             maxChapter = bibleBooks[book].chapters;
             generateChapterButtons(maxChapter);
         });
-        ButtonsContainer.appendChild(button);
+        const span = ButtonsContainer.getElementsByClassName(koreanIndex + 'bible')[0];
+        span.appendChild(button);
     }
 }
