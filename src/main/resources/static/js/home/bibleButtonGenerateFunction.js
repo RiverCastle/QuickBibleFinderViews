@@ -14,6 +14,12 @@ function bibleButtonGenerate(bibleBooks, ButtonsContainer) {
             updateUrl();
             maxChapter = bibleBooks[book].chapters;
             generateChapterButtons(maxChapter);
+
+            // auto scroll
+            window.scrollTo({
+                top: document.body.scrollHeight,
+                behavior: 'smooth' // 부드러운 스크롤 효과
+            });
         });
         ButtonsContainer.appendChild(button);
     }

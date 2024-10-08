@@ -255,3 +255,5 @@ src/main/java/*
 src/main/resources/application.yml
 src/main/resources/application.properties
 # End of https://www.toptal.com/developers/gitignore/api/gradle,intellij+all,intellij,java,windows
+/src/main/resources/static/js/common/test-config.js
+/src/main/resources/static/js/common/config.js
