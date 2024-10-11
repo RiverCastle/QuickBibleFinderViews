@@ -11,6 +11,12 @@ function generateBibleButtonInKoreanIndex(bibleBooks, ButtonsContainer) {
             updateUrl();
             maxChapter = bibleBooks[book].chapters;
             generateChapterButtons(maxChapter);
+
+            // auto scroll
+            window.scrollTo({
+                top: document.body.scrollHeight,
+                behavior: 'smooth' // 부드러운 스크롤 효과
+            });
         });
         const span = ButtonsContainer.getElementsByClassName(koreanIndex + 'bible')[0];
         span.appendChild(button);
